@@ -6,7 +6,7 @@ Moka Linguijs is a vscode plugin that can help you to transform raw-string to i1
 
 Very simple but not so user-friendly demo:
 
-\!\[Convert raw string to i18n string\]\(images/basic_usage.gif\)
+![basic usage](https://github.com/southerncross/mokalinguijs/blob/master/images/basic_usage.gif?raw=true)
 
 I'll keep optimizing it.
 
