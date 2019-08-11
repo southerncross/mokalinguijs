@@ -1,17 +1,19 @@
 {
 	"name": "mokalinguijs",
-	"displayName": "MokaLinguijs",
-	"description": "",
+	"displayName": "Moka Linguijs",
+	"description": "A simple util that can help you to convert raw-string to i18n-string easily.",
 	"version": "0.0.1",
 	"publisher": "lishunyang",
 	"repository": {
     "type": "git",
     "url": "https://github.com/southerncross/mokalinguijs.git"
-  },
+	},
+	"icon": "images/icon.png",
 	"engines": {
 		"vscode": "^1.36.0"
 	},
 	"categories": [
+		"Programming Languages",
 		"Other"
 	],
 	"activationEvents":  [
