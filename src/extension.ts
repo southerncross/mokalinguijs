@@ -2,32 +2,23 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-const CONVERSION_COMMAND:string = 'moka.i18n.conversion';
-
 class I18nConversionActionProvider implements vscode.CodeActionProvider {
-	public provideCodeActions(document: vscode.TextDocument, range: vscode.Range): vscode.Command[] {
-		const text = document.getText(range);
-		if (/^('|"|`).*('|"|`)$/.test(text)) {
+	public provideCodeActions(document: vscode.TextDocument, range: vscode.Range): vscode.CodeAction[] {
+		let text = document.getText(range);
+		if (text[0] === text[text.length - 1] && /'|"|`/.test(text[0])) {
 			const nextText = 'i18n.t`' + text.substr(1, text.length - 2) + '`';
+			const edit = new vscode.WorkspaceEdit();
+			edit.replace(document.uri, range, nextText);
 			return [{
-				command: CONVERSION_COMMAND,
+				edit,
 				title: 'Convert to [' + nextText + ']',
-				tooltip: 'Convert to i18n string',
-				arguments: [document, range, nextText],
+				kind: vscode.CodeActionKind.QuickFix,
+				isPreferred: true,
 			}];
-		} else {
-			return [];
 		}
-	}
-}
 
-function registerConversionCommand(): vscode.Disposable {
-	return vscode.commands.registerCommand(CONVERSION_COMMAND, (document: vscode.TextDocument, range: vscode.Range, nextText: string) => {
-		const edit = new vscode.WorkspaceEdit();
-		const text = document.getText(range);
-		edit.replace(document.uri, range, nextText);
-		vscode.workspace.applyEdit(edit);
-	});
+		return [];
+	}
 }
 
 function registerActionProvider(): vscode.Disposable {
@@ -40,7 +31,6 @@ function registerActionProvider(): vscode.Disposable {
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(registerConversionCommand());
 	context.subscriptions.push(registerActionProvider());
 }
 
