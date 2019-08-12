@@ -8,8 +8,6 @@ Very simple but not so user-friendly demo:
 
 ![basic usage](https://github.com/southerncross/mokalinguijs/blob/master/images/basic_usage.gif?raw=true)
 
-I'll keep optimizing it.
-
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
@@ -17,6 +15,10 @@ Calling out known issues can help limit users opening duplicate issues against y
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
+
+### 0.0.3
+
+Refactor code [PR#1](https://github.com/southerncross/mokalinguijs/pull/1)
 
 ### 0.0.2
 
