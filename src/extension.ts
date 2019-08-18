@@ -11,13 +11,21 @@ class I18nConversionActionProvider implements vscode.CodeActionProvider {
 			edit.replace(document.uri, range, nextText);
 			return [{
 				edit,
-				title: 'Convert to [' + nextText + ']',
+				title: 'Convert to <strong style="color:red;">' + nextText + '</strong>',
+				kind: vscode.CodeActionKind.QuickFix,
+				isPreferred: true,
+			}];
+		} else {
+			const nextText = '<Trans>' + text + '</Trans>';
+			const edit = new vscode.WorkspaceEdit();
+			edit.replace(document.uri, range, nextText);
+			return [{
+				edit,
+				title: 'Convert to <strong style="color:red;"><i><</i>Trans>' + nextText + '<i><</i><i>/</i>Trans></strong>',
 				kind: vscode.CodeActionKind.QuickFix,
 				isPreferred: true,
 			}];
 		}
-
-		return [];
 	}
 }
 
