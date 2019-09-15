@@ -16,6 +16,10 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 Users appreciate release notes as you update your extension.
 
+### 0.0.4
+
+Add Trans macro [PR#2](https://github.com/southerncross/mokalinguijs/pull/2)
+
 ### 0.0.3
 
 Refactor code [PR#1](https://github.com/southerncross/mokalinguijs/pull/1)
