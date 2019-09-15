@@ -6,15 +6,33 @@ class I18nConversionActionProvider implements vscode.CodeActionProvider {
 	public provideCodeActions(document: vscode.TextDocument, range: vscode.Range): vscode.CodeAction[] {
 		let text = document.getText(range);
 		if (text[0] === text[text.length - 1] && /'|"|`/.test(text[0])) {
-			const nextText = 'i18n.t`' + text.substr(1, text.length - 2) + '`';
-			const edit = new vscode.WorkspaceEdit();
+			const actions = [];
+			let nextText = '';
+			let edit = null;
+
+			// linguijs v0.x
+			nextText = 'i18n.t`' + text.substr(1, text.length - 2) + '`';
+			edit = new vscode.WorkspaceEdit();
 			edit.replace(document.uri, range, nextText);
-			return [{
+			actions.push({
 				edit,
-				title: 'Convert to <strong style="color:red;">' + nextText + '</strong>',
+				title: 'Convert to [' + nextText + '] (linguijs v0.x)',
 				kind: vscode.CodeActionKind.QuickFix,
 				isPreferred: true,
-			}];
+			});
+
+			// linguijs v2.x
+			nextText = 'i18n._(t`' + text.substr(1, text.length - 2) + '`)';
+			edit = new vscode.WorkspaceEdit();
+			edit.replace(document.uri, range, nextText);
+			actions.push({
+				edit,
+				title: 'Convert to [' + nextText + '] (linguijs v1.x)',
+				kind: vscode.CodeActionKind.QuickFix,
+				isPreferred: true,
+			});
+
+			return actions;
 		} else {
 			const nextText = '<Trans>' + text + '</Trans>';
 			const edit = new vscode.WorkspaceEdit();
