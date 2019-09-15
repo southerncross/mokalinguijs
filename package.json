@@ -2,7 +2,7 @@
 	"name": "mokalinguijs",
 	"displayName": "Moka Linguijs",
 	"description": "A simple util that can help you to convert raw-string to i18n-string easily.",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"publisher": "lishunyang",
 	"repository": {
     "type": "git",
