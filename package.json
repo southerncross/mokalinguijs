@@ -5,8 +5,8 @@
 	"version": "0.0.5",
 	"publisher": "lishunyang",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/southerncross/mokalinguijs.git"
+		"type": "git",
+		"url": "https://github.com/southerncross/mokalinguijs.git"
 	},
 	"icon": "images/icon.png",
 	"engines": {
@@ -16,8 +16,11 @@
 		"Programming Languages",
 		"Other"
 	],
-	"activationEvents":  [
-    "onLanguage:javascript"
+	"activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
 	],
 	"main": "./out/extension.js",
 	"contributes": {},
